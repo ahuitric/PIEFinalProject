@@ -19,30 +19,36 @@ int turn_delay = 15;
 int incomingByte = 0; // for incoming serial data
 
 void get_state(){
+  Serial.println(String(r_val));
+  Serial.print(String(l_val));
+  Serial.print("\t");
+  Serial.print(String(state));
+  Serial.print("\t");
   String info = String(r_val) + ", " + String(l_val);
   // + ", " + //String(r_speed) + ", " +String(l_speed);
-  Serial.println(info);
+  // Serial.println(info);
 if (Serial.available()>0){
  incomingByte = Serial.parseInt();
   if (incomingByte > 0){
     turn_delay = incomingByte;
   }
 }
+
+  r_val = (analogRead(pinIRa)+analogRead(pinIRa)+analogRead(pinIRa)+analogRead(pinIRa)+analogRead(pinIRa))/5;
+  l_val = (analogRead(pinIRa_l)+analogRead(pinIRa_l)+analogRead(pinIRa_l)+analogRead(pinIRa_l)+analogRead(pinIRa_l))/5;
+
 if (state == 1){
-    Serial.println(analogRead(pinIRa));
-    Serial.print(analogRead(pinIRa_l));
-    r_val = (analogRead(pinIRa)+analogRead(pinIRa)+analogRead(pinIRa)+analogRead(pinIRa)+analogRead(pinIRa))/5;
-    l_val = (analogRead(pinIRa_l)+analogRead(pinIRa_l)+analogRead(pinIRa_l)+analogRead(pinIRa_l)+analogRead(pinIRa_l))/5;
     
-     if (r_val > 1000 & l_val < 1000){
+     if (r_val > 970 & l_val < 1015){
       state = 3;
      }
-      if (l_val > 1000 & r_val < 1000){
+     else if (l_val > 1015 & r_val < 970){
       state = 2;
     }
-    if (r_val > 1000 & l_val > 1000) {
+     else if (r_val > 970 & l_val > 1015) {
       state = 4;
     }
+    
     }
      
   
@@ -52,6 +58,10 @@ if (state == 1){
 
   else if (state == 3){
     state = 1;
+  }
+
+  else if (state == 4) {
+    state == 1;
   }
 }
 
@@ -114,8 +124,8 @@ void loop() {
           delay(5);
         }   
       case 4:
-        digitalWrite(LED_RED, HIGH);
-        digitalWrite(LED_GREEN, HIGH);
+        digitalWrite(LED_RED, LOW);
+        digitalWrite(LED_GREEN, LOW);
         while (state == 4){
           get_state();
           delay(5);
