@@ -1,10 +1,10 @@
-import cv2 #-m pip install --no-cache-dir opencv-python
+import cv2 # pip install opencv
+#pip install opencv-contrib-python
 import matplotlib.pyplot as plt #pip install numpy
 from deepface import DeepFace #pip install deepface
 
 scale = 25
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
-
 
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 cap = cv2.VideoCapture(0)
