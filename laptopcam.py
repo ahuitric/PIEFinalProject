@@ -1,3 +1,9 @@
+''' This code uses the deepface library to read facial expressions from a live webcam video.
+The dominant emotion read from the facial expression will then be sent to an arduino that can 
+then use it as needed. Dependencies are listed below and the serial monitor of the Arduino 
+cannot be open while this code is running. 
+'''
+
 import cv2 # pip install opencv
 #pip install opencv-contrib-python
 import matplotlib.pyplot as plt #pip install numpy
@@ -6,11 +12,11 @@ from deepface import DeepFace #pip install deepface
 import serial
 import time
 
+# Set up arduino, comport needs to be changed depending on laptop/device
 arduino = serial.Serial(port='COM8', baudrate=115200, timeout=.1)
 
+# Set up cv2/face cascade information
 scale = 25
-face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
-
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 cap = cv2.VideoCapture(0)
 xavg = []
@@ -37,7 +43,8 @@ while True:
 
     if cv2.waitKey(1) == 27:
         break
-
+    
+    # detects face then places a yellow rectangle around it 
     faces = face_cascade.detectMultiScale(frame, scaleFactor=1.2, minSize=(20, 20))
     X = 0
     Y = 0
@@ -75,7 +82,7 @@ while True:
     elif text == 'disgust':
         emotion_value = 7
 
-    
+    # Check if arduino is currently looking for emotion data
     arduino_data = arduino.readline()
     arduino_string = arduino_data.decode("utf-8")
     
@@ -83,7 +90,7 @@ while True:
         print("emotion value")
         print(f'emotion value: {emotion_value}')
         arduino.write(str(emotion_value).encode("utf-8"))
-        #Display in imshow
+        #Display in imshow if arduino is seeking an expression
         cv2.imshow('Camera', image)
         if cv2.waitKey(1) & 0xFF == 27:
             break
@@ -92,7 +99,6 @@ while True:
         arduino_data = arduino.readline()
         arduino_string = arduino_data.decode("utf-8")
         print(arduino_string)
-
 
 
 # When everything done, release the capture

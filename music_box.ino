@@ -303,21 +303,159 @@ void play_sad(){//2
 void play_angry(){//3
   Serial.println("Angry");
   song_status = 1;
+  play_note(note_C5, EIGHTH);
+  play_note(note_E5, EIGHTH);
+  play_note(note_G5, EIGHTH);
+  play_note(note_A5, EIGHTH);
+  play_note(note_A5, EIGHTH);
+  play_note(note_G5, QUARTER);
 
+  play_note(note_E5, EIGHTH);
+  play_note(note_D5, EIGHTH);
+  play_note(note_D5, EIGHTH);
+  play_note(note_C5, EIGHTH);
+  play_note(note_C5, EIGHTH);
+  play_note(note_D5, QUARTER);
+  play_note(note_G4, QUARTER);
+  play_note(note_F4, EIGHTH);
+  play_note(note_G4, EIGHTH);
+  play_note(note_C5, QUARTER);
+  play_note(note_C5, EIGHTH);
+
+  play_note(note_G5, QUARTER);
+  play_note(note_E5, QUARTER);
+  play_note(note_D5, EIGHTH);
+  play_note(note_C5, HALF);
+
+  play_note(note_C5, EIGHTH);
+  play_note(note_E5, EIGHTH);
+  play_note(note_G5, EIGHTH);
+  play_note(note_A5, QUARTER);
+  play_note(note_G5, EIGHTH);
+  play_note(note_A5, EIGHTH);
+  play_note(note_E5, EIGHTH);
+  play_note(note_D5, EIGHTH);
+  play_note(note_C5, QUARTER);
+  play_note(note_C5, EIGHTH);
+  play_note(note_D5, EIGHTH);
+  play_note(note_E5, EIGHTH);
+  play_note(note_D5, QUARTER);
+
+  play_note(note_G4, EIGHTH);
+  play_note(note_C5, QUARTER);
+  play_note(note_C5, EIGHTH);
+  play_note(note_G5, QUARTER);
+  play_note(note_E5, QUARTER);
+  play_note(note_D5, EIGHTH);
+  play_note(note_C5, QUARTER);
   song_status = 0;
 }
 
 void play_fear(){//4
   Serial.println("Fear");
   song_status = 1;
+  play_note(note_C5, QUARTER);
+  play_note(note_C5, QUARTER);
+  play_note(note_C5, EIGHTH);
+  play_note(note_C5, QUARTER);
+  play_note(note_B5, QUARTER);
+  play_note(note_A5, QUARTER);
 
+  play_note(note_C5, QUARTER);
+  play_note(note_C5, QUARTER);
+  play_note(note_C5, EIGHTH);
+  play_note(note_C5, QUARTER);
+  play_note(note_B5, QUARTER);
+  play_note(note_A5, QUARTER);
+
+  play_note(note_C5, QUARTER);
+  play_note(note_F4, QUARTER);
+  play_note(note_F4, QUARTER);
+  play_note(note_E4, EIGHTH);
+  play_note(note_D4, EIGHTH);
+  play_note(note_C4, QUARTER);
+  play_note(note_G4, QUARTER);
+  play_note(note_B4, HALF);
+
+
+  play_note(note_C5, QUARTER);
+  play_note(note_C5, EIGHTH);
+  play_note(note_C5, QUARTER);
+  play_note(note_B5, QUARTER);
+  play_note(note_A5, QUARTER);
+
+  play_note(note_C5, EIGHTH);
+  play_note(note_C5, EIGHTH);
+  play_note(note_C5, EIGHTH);
+  play_note(note_C5, EIGHTH);
+  play_note(note_C5, EIGHTH);
+  play_note(note_B5, EIGHTH);
+  play_note(note_A5, EIGHTH);
+
+  play_note(note_B4, QUARTER);
+  play_note(note_G4, QUARTER);
+  play_note(note_G4, QUARTER);
+  play_note(note_F4, EIGHTH);
+  play_note(note_E4, EIGHTH);
+
+  play_note(note_D4, EIGHTH);
+  play_note(note_D4, EIGHTH);
+  play_note(note_D4, EIGHTH);
+  play_note(note_D4, EIGHTH);
+  play_note(note_D4, EIGHTH);
+  play_note(note_D4, EIGHTH);
+  play_note(note_D4, QUARTER);
+
+  play_note(note_F4, QUARTER);
+  play_note(note_F4, QUARTER);
+  play_note(note_D4, QUARTER);
+
+  play_note(note_F4, EIGHTH);
+  play_note(note_F4, EIGHTH);
+  play_note(note_F4, EIGHTH);
+  play_note(note_F4, EIGHTH);
+  play_note(note_D4, QUARTER);
+
+  play_note(note_C4, QUARTER);
+  play_note(note_F4, QUARTER);
+  play_note(note_F4, QUARTER);
+  play_note(note_C4, QUARTER);
+
+  play_note(note_C4, QUARTER);
+  play_note(note_C4, EIGHTH);
+  play_note(note_D4, EIGHTH);
+  play_note(note_E4, WHOLE);
   song_status = 0;
 }
 
 void play_surprise(){//5
   Serial.println("Surprise");
   song_status = 1;
-
+  play_note(note_G4, EIGHTH);
+  play_note(note_G4, EIGHTH);
+  play_note(note_A4, QUARTER);
+  play_note(note_G4, QUARTER);
+  play_note(note_C5, QUARTER);
+  play_note(note_B4, HALF);
+  play_note(note_G4, EIGHTH);
+  play_note(note_G4, EIGHTH);
+  play_note(note_A4, QUARTER);
+  play_note(note_G4, QUARTER);
+  play_note(note_C5, QUARTER);
+  play_note(note_B4, HALF);
+  play_note(note_G4, EIGHTH);
+  play_note(note_G4, EIGHTH);
+  play_note(note_G5, QUARTER);
+  play_note(note_E5, QUARTER);
+  play_note(note_C5, QUARTER);
+  play_note(note_B4, QUARTER);
+  play_note(note_A4, QUARTER);
+  play_note(note_F5, EIGHTH);
+  play_note(note_F5, EIGHTH);
+  play_note(note_E5, QUARTER);
+  play_note(note_C5, QUARTER);
+  play_note(note_D5, QUARTER);
+  play_note(note_C5, HALF);
   song_status = 0;
 }
 

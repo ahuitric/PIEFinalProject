@@ -5,7 +5,6 @@ Adafruit_MotorShield AFMS = Adafruit_MotorShield();
 Adafruit_DCMotor *motor = AFMS.getMotor(3);
 
 double speed;
-int turn_delay = 15;
 void setup() {
   Serial.begin(9600);
   AFMS.begin();
