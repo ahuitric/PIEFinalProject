@@ -6,7 +6,7 @@ from deepface import DeepFace #pip install deepface
 import serial
 import time
 
-arduino = serial.Serial(port='COM6', baudrate=115200, timeout=.1)
+arduino = serial.Serial(port='COM8', baudrate=115200, timeout=.1)
 
 scale = 25
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
