@@ -40,26 +40,26 @@ HCPCA9685 HCPCA9685(0x40);
 //Servo note_B5;
 //Servo note_C6;
 
-int note_C4 = 0;
-int note_D4 = 1;
-int note_E4 = 2;
-int note_F4 = 3;
-int note_G4 = 4;
-int note_A4 = 5;
-int note_B4 = 6;
-int note_C5 = 7;
-int note_D5 = 8;
-int note_E5 = 9;
-int note_F5 = 10;
-int note_G5 = 11;
-int note_A5 = 12;
-int note_B5 = 13;
-int note_C6 = 14;
+int note_C4 = 1;
+int note_D4 = 2;
+int note_E4 = 3;
+int note_F4 = 4;
+int note_G4 = 5;
+int note_A4 = 6;
+int note_B4 = 7;
+int note_C5 = 8;
+int note_D5 = 9;
+int note_E5 = 10;
+int note_F5 = 11;
+int note_G5 = 12;
+int note_A5 = 13;
+int note_B5 = 14;
+int note_C6 = 15;
 
-int WHOLE = 2000;
-int HALF = 1000;
-int QUARTER = 500;
-int EIGHTH = 250;
+int WHOLE = 1800;
+int HALF = 800;
+int QUARTER = 300;
+int EIGHTH = 50;
 
 int state = 1;
 int current_emotion = 0;
@@ -73,6 +73,7 @@ void setup() {
 //  pwm.setPWMFreq(FREQUENCY);
   HCPCA9685.Init(SERVO_MODE);
   HCPCA9685.Sleep(false);
+  zero_time();
   AFMS.begin();
   
 //  note_C4.attach(0);
@@ -105,24 +106,64 @@ int pulseWidth(int angle){
     return analog_value;
 }
 
+void zero_time(){
+//  HCPCA9685.Servo(0, 30);
+//  delay(1000);
+//  HCPCA9685.Servo(1, 30);
+//  delay(1000);
+//  HCPCA9685.Servo(2, 30);
+//  delay(1000);
+//  HCPCA9685.Servo(3, 30);
+//  delay(1000);
+//  HCPCA9685.Servo(4, 30);
+//  delay(1000);
+//  HCPCA9685.Servo(5, 30);
+//  delay(1000);
+//  HCPCA9685.Servo(6, 30);
+//  delay(1000);
+//  HCPCA9685.Servo(7, 30);
+  delay(1000);
+  HCPCA9685.Servo(8, 0);
+  delay(1000);
+  HCPCA9685.Servo(9, 0);
+  delay(1000);
+  HCPCA9685.Servo(10, 0);
+  delay(1000);
+  HCPCA9685.Servo(11, 0);
+  delay(1000);
+  HCPCA9685.Servo(12, 0);
+  delay(1000);
+  HCPCA9685.Servo(13, 0);
+  delay(1000);
+  HCPCA9685.Servo(14, 0);
+}
 void play_note(int note, int note_length){
-    Serial.println(note);
-    HCPCA9685.Servo(note, 30);
-    delay(10);
-    HCPCA9685.Servo(note, 0);
-    delay(note_length);
+    if (note < 8) {
+      Serial.println(note);
+      HCPCA9685.Servo(note, 0);
+      delay(200);
+      HCPCA9685.Servo(note, 30);
+      delay(note_length);
+    }
+    else {
+      Serial.println(note);
+      HCPCA9685.Servo(note, 80);
+      delay(200);
+      HCPCA9685.Servo(note, 0);
+      delay(note_length);
+    }
 }
 
-void play_chord(int note1, int note2, int note_length){
-    Serial.println(note1);
-    Serial.print(note2);
-    HCPCA9685.Servo(note1, 30);
-    HCPCA9685.Servo(note2, 30);
-    delay(10);
-    HCPCA9685.Servo(note1, 0);
-    HCPCA9685.Servo(note2, 0);
-    delay(note_length);
-}
+//void play_chord(int note1, int note2, int note_length){
+//    Serial.println(note1);
+//    Serial.print(note2);
+//    HCPCA9685.Servo(note1, 80);
+//    HCPCA9685.Servo(note2, 80);
+//    delay(10);
+//    HCPCA9685.Servo(note1, 0);
+//    HCPCA9685.Servo(note2, 0);
+//    delay(note_length);
+//}
 
 
 
@@ -130,8 +171,32 @@ void play_chord(int note1, int note2, int note_length){
 void play_neutral(){ //1
   Serial.println("Neutral");
   song_status = 1;
-
-
+  play_note(note_C4, QUARTER);
+  play_note(note_E4, EIGHTH);
+  play_note(note_D4, QUARTER);
+  play_note(note_F4, EIGHTH);
+  play_note(note_E4, QUARTER);
+  play_note(note_G4, EIGHTH);
+  play_note(note_F4, QUARTER);
+  play_note(note_A4, EIGHTH);
+  play_note(note_G4, QUARTER);
+  play_note(note_B4, EIGHTH);
+  play_note(note_A4, QUARTER);
+  play_note(note_C5, EIGHTH);
+  play_note(note_B4, QUARTER);
+  play_note(note_D5, EIGHTH);
+  play_note(note_C5, QUARTER);
+  play_note(note_E5, EIGHTH);
+  play_note(note_D5, QUARTER);
+  play_note(note_F5, EIGHTH);
+  play_note(note_E5, QUARTER);
+  play_note(note_G5, EIGHTH);
+  play_note(note_F5, QUARTER);
+  play_note(note_A5, EIGHTH);
+  play_note(note_G5, QUARTER);
+  play_note(note_B5, EIGHTH);
+  play_note(note_A5, QUARTER);
+  play_note(note_C6, EIGHTH);
   song_status = 0;
 }
 
@@ -209,7 +274,29 @@ void play_happy(){ // 2
 void play_sad(){//2
   Serial.println("Sad");
   song_status = 1;
-  
+  play_note(note_G4, HALF);
+  play_note(note_D5, HALF);
+  play_note(note_G4, HALF);
+  play_note(note_G4, QUARTER);
+  play_note(note_A4, EIGHTH);
+  play_note(note_B4, EIGHTH);
+  play_note(note_C5, HALF);
+  play_note(note_B4, HALF);
+  play_note(note_A4, HALF);
+  play_note(note_A4, QUARTER);
+  play_note(note_A4, EIGHTH);
+  play_note(note_D4, EIGHTH);
+  play_note(note_E4, HALF);
+  play_note(note_E4, QUARTER);
+  play_note(note_F4, QUARTER);
+  play_note(note_G4, HALF);
+  play_note(note_A4, QUARTER);
+  play_note(note_B4, QUARTER);
+  play_note(note_C5, QUARTER);
+  play_note(note_B4, HALF);
+  play_note(note_A4, HALF);
+  play_note(note_B4, HALF);
+  play_note(note_G4, WHOLE);
   song_status = 0;
 }
 
@@ -237,7 +324,25 @@ void play_surprise(){//5
 void play_disgust(){
   Serial.println("Disgust");
   song_status = 1;
-
+  play_note(note_A4, EIGHTH);
+  play_note(note_A4, EIGHTH);
+  play_note(note_A5, QUARTER);
+  play_note(note_E5, EIGHTH);
+  play_note(note_E5, EIGHTH);
+  play_note(note_D5, QUARTER);
+  play_note(note_C5, QUARTER);
+  play_note(note_A4, EIGHTH);
+  play_note(note_C5, EIGHTH);
+  play_note(note_D5, QUARTER);
+  play_note(note_G4, EIGHTH);
+  play_note(note_G4, EIGHTH);
+  play_note(note_A5, QUARTER);
+  play_note(note_E5, EIGHTH);
+  play_note(note_E5, EIGHTH);
+  play_note(note_D5, QUARTER);
+  play_note(note_C5, QUARTER);
+  play_note(note_A4, EIGHTH);
+  play_note(note_C5, EIGHTH);
   song_status = 0;
 }
 
