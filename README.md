@@ -4,7 +4,7 @@ The code in this repository is used to read facial expressions from live webcam 
 
 ## Installation
 
-This project uses a Windows 10 computer with a webcam and an Arduino Uno that is plugged into the laptop with a USB-USBA cable. The Arduino is connected to a PCA9685 Adafruit PWM servo driver as fifteen servos are used to play notes on a music box. Note: Serial monitor cannot be open at the same time as running the python code.
+This project uses a Windows 10 computer with a webcam and an Arduino Uno that is plugged into the laptop with a USB-USBA cable. The Arduino is connected to a PCA9685 (library [here](https://learn.adafruit.com/16-channel-pwm-servo-driver/using-the-adafruit-library)) Adafruit PWM servo driver as fifteen servos are used to play notes on a music box. Note: Serial monitor cannot be open at the same time as running the python code.
 
 Currently the code and its dependencies work on Windows 10, the following things will need to be installed:
 
@@ -21,4 +21,4 @@ The laptopcam.py file runs facial recognition/emotion recognition and will send 
 
 ## Authors and acknowledgment
 
-Authors of the code: Alana Huitric and Isabella Abilheira. Mechanical engineers: Emily Wan and Maya Lum.
+Author of the code: Alana Huitric. Electrical engineer: Isabella Abilheira. Mechanical engineers: Emily Wan and Maya Lum.
