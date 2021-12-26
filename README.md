@@ -1,6 +1,6 @@
 # Emotional Music Box Project
 
-The code in this repository is used to read facial expressions from live webcam video to send to an Arduino that will use the expression to play a preprogrammed song on 15 servos.
+The code in this repository is used to read facial expressions from live webcam video to send to an Arduino that will use the expression to play a preprogrammed song on 15 servos. To read more about this project please visit our [website](https://olincollege.github.io/pie-2021-03/WHALe/).
 
 ## Installation
 
